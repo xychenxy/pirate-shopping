@@ -19,7 +19,7 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 <br/>
 
 ## Tech
-### Front end
+### Front-end
 `React 18`, `vite`, `TypeScript`, `Redux`, `Hooks`, `Stripe`, `Firebase`, `Google Login`
 
 ### Backend
