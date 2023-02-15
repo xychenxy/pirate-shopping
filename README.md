@@ -7,7 +7,7 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 <br/>
 
 ## To do list breakdown
-- Deploy to AWS instead of Netlify [Doing]
+- Deploy to AWS instead of Netlify, http://3.27.8.206:5000/  [Doing]
 - Buildkite [To do]
 - Storybook [To do]
 - Auth0  [To do]
