@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+    pirate_shopping:
+        environment:
+            - ENV_NAME=prod
+    backend:
+        environment:
+            - ENV_NAME=prod
+        command: yarn start
+    react-app:
+        environment:
+            - VITE_ENV_NAME=prod

@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const api = require("./routes/api");
+const Config = require("./config");
 
 const app = express();
 
@@ -13,10 +14,12 @@ app.use(express.static(path.join(__dirname, "..", "..", "react-app", "dist")));
 
 app.use("/v1", api);
 
-app.get("/*", (req, res) => {
-	res.sendFile(
-		path.join(__dirname, "..", "..", "react-app", "public", "index.html")
-	);
-});
+if (["prod"].includes(Config.envName)) {
+	//Set static folder
+	app.use(express.static(path.join(__dirname, "..", "dist")));
+	app.get("/*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "..", "dist", "index.html"));
+	});
+}
 
 module.exports = app;

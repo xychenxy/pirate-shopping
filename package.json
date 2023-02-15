@@ -9,7 +9,7 @@
 		"install-backend": "yarn --cwd backend install",
 		"install-react-app": "yarn --cwd react-app ",
 		"install": "yarn install-backend && yarn install-react-app",
-		"react-app-build": "yarn --cwd build",
+		"react-app-build": "yarn --cwd react-app build",
 		"backend-dev": "yarn --cwd backend dev",
 		"react-app-dev": "yarn --cwd react-app dev",
 		"dev": "yarn backend-dev & yarn react-app-dev",

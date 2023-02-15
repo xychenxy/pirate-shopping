@@ -1,5 +1,14 @@
 version: "3.9"
 services:
+    pirate_shopping:
+        image: pirate_shopping
+        build: .
+        environment:
+            - PORT=5000
+            - HOST=0.0.0.0
+            - ENV_NAME=prod
+        ports:
+            - "5000:5000"
     backend:
         image: online_shopping_backend
         build:
@@ -11,7 +20,7 @@ services:
         environment:
             - PORT=5000
             - HOST=0.0.0.0
-        command: yarn dev
+            - ENV_NAME=dev
         ports:
             - "5000:5000"
     react-app:
@@ -25,5 +34,6 @@ services:
         environment:
             - PORT=8080
             - VITE_BACKEND_URL=http://localhost:5000
+            - VITE_ENV_NAME=dev
         ports:
             - "8080:8080"
