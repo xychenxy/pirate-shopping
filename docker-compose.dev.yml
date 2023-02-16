@@ -1,9 +1,0 @@
-version: "3.9"
-services:
-    backend:
-        environment:
-            - ENV_NAME=dev
-        command: yarn dev
-    react-app:
-        environment:
-            - ENV_NAME=dev
