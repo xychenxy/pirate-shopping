@@ -2,22 +2,63 @@ name: Pirate shopping project CI
 on:
     push:
         branches: [master]
-    pull_request:
-        branches: [master]
+---
+name: Build and Push Golang Image to AWS ECR
+on:
+    push:
+        branches: [main]
 jobs:
-    build:
-        env:
-            CI: true
-        strategy:
-            matrix:
-                node-version: [16.x, 18.x]
+    build-and-push:
+        name: Build and Push to ECR
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js version ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
+            - name: Checkout
+              uses: actions/checkout@v2
+
+            - name: Configure AWS credentials
+              uses: aws-actions/configure-aws-credentials@v1
               with:
-                  node-version: ${{ matrix.node-version }}
-            - run: yarn install
-            - run: yarn react-app-build
-            # - run: npm test
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: ap-southeast-2
+
+            - name: Login to Amazon ECR
+              id: login-ecr
+              uses: aws-actions/amazon-ecr-login@v1
+
+            - name: Automatic Tagging of Releases
+              id: increment-git-tag
+              run: |
+                  bash ./build/git_update.sh -v patch
+
+            - name: Build, Tag, and Push the Image to Amazon ECR
+              id: build-image
+              env:
+                  ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+                  ECR_REPOSITORY: pirate-shopping
+                  IMAGE_TAG: ${{ steps.increment-git-tag.outputs.git-tag }}
+              run: |
+                  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+                  docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+# jobs:
+#     build-and-push:
+#         name: Build and Push to ECR
+#         runs-on: linux-latest
+
+#     build:
+#         env:
+#             CI: true
+#         strategy:
+#             matrix:
+#                 node-version: [18.x]
+#         runs-on: ubuntu-latest
+#         steps:
+#             - uses: actions/checkout@v2
+#             - name: Use Node.js version ${{ matrix.node-version }}
+#               uses: actions/setup-node@v2
+#               with:
+#                   node-version: ${{ matrix.node-version }}
+#             - run: yarn install
+#             - run: yarn react-app-build
+#             # - run: npm test
