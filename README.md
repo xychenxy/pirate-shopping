@@ -7,8 +7,9 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 <br/>
 
 ## To do list breakdown
-- Deploy to AWS instead of Netlify, http://3.27.8.206/  [Doing]
-- Buildkite [To do]
+- Deploy to AWS instead of Netlify, http://3.27.8.206/  [Done]
+- Setup github actions, to push docker images to AWS ECR [Done]
+- Explore CI/D [Doing]
 - Storybook [To do]
 - Auth0  [To do]
 - Unit test [To do]
