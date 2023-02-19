@@ -26,13 +26,13 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const sagaMiddleware = createSagaMiddleware();
 
 const middleWares = [
-	import.meta.env.MODE !== "prod" && logger,
+	import.meta.env.MODE === "development" && logger,
 	sagaMiddleware,
 ].filter((middleware): middleware is Middleware => Boolean(middleware));
 
 export const store = configureStore({
 	reducer: persistedReducer,
-	devTools: import.meta.env.MODE !== "prod",
+	devTools: import.meta.env.MODE === "development",
 	middleware: new MiddlewareArray().concat(middleWares),
 });
 

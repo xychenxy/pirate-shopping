@@ -14,10 +14,7 @@ app.use(express.static(path.join(__dirname, "..", "..", "react-app", "dist")));
 
 app.use("/v1", api);
 
-// for testing
-console.log("test");
-
-if (["prod"].includes(Config.envName)) {
+if (["prod, production"].includes(Config.envName)) {
 	//Set static folder
 	app.use(express.static(path.join(__dirname, "..", "dist")));
 	app.get("/*", (req, res) => {
