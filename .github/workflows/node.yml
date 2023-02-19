@@ -27,9 +27,9 @@ jobs:
               run: |
                   bash ./build/git_update.sh -v patch
 
-            - name: Testing
+            - name: Set up nnvironment variables for frontend
               id: testing
-              run: echo "The API key is:${{vars.VITE_FIREBASE_API_KEY}}"
+#             run: echo "The API key is:${{vars}}"
 
             - name: Build, Tag, and Push the Image to Amazon ECR
               id: build-image
@@ -40,25 +40,3 @@ jobs:
               run: |
                   docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
                   docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-
-# jobs:
-#     build-and-push:
-#         name: Build and Push to ECR
-#         runs-on: linux-latest
-
-#     build:
-#         env:
-#             CI: true
-#         strategy:
-#             matrix:
-#                 node-version: [18.x]
-#         runs-on: ubuntu-latest
-#         steps:
-#             - uses: actions/checkout@v2
-#             - name: Use Node.js version ${{ matrix.node-version }}
-#               uses: actions/setup-node@v2
-#               with:
-#                   node-version: ${{ matrix.node-version }}
-#             - run: yarn install
-#             - run: yarn react-app-build
-#             # - run: npm test
