@@ -7,13 +7,13 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 <br/>
 
 ## To do list breakdown
-- Deploy to AWS instead of Netlify, http://3.27.8.206/  [Done]
+- Deploy to AWS instead of Netlify, https://pirate-in-melbourne.com/  [Done]
 - Setup github actions, to push docker images to AWS ECR [Done]
-- Explore CI/D [Doing]
-- Storybook [To do]
-- Auth0  [To do]
+- Auth0  [Doing]
 - Unit test [To do]
 - Integration test [To do]
+- Storybook [To do]
+
 
 
 
