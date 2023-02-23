@@ -6,6 +6,6 @@ services:
         environment:
             - PORT=5000
             - HOST=0.0.0.0
-            - ENV_NAME=prodution
+            - NODE_ENV=production
         ports:
             - "5000:5000"

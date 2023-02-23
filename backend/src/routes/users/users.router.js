@@ -5,8 +5,6 @@ const usersRouter = express.Router();
 
 usersRouter.get("/", async (req, res) => {
 	try {
-		console.log("test");
-
 		let userRef = db.collection("users");
 
 		const users = userRef.get().then((querySnapshot) => {
@@ -16,8 +14,6 @@ usersRouter.get("/", async (req, res) => {
 				return document.data();
 			});
 		});
-
-		console.log("users", users);
 
 		return res.status(200).json({ users: ["Jay", "Joy", "Alice"] });
 	} catch (error) {

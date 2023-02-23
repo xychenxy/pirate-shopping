@@ -1,5 +1,5 @@
 class Config {
-	static envName = process.env.ENV_NAME;
+	static node_env = process.env.NODE_ENV;
 }
 
 module.exports = Config;

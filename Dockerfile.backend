@@ -8,6 +8,4 @@ COPY backend/auth ./
 
 RUN yarn install
 
-
-EXPOSE 8080
 CMD yarn dev

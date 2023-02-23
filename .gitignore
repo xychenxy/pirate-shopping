@@ -24,8 +24,11 @@ dist-ssr
 *.sw?
 
 .env
+.env*
+env
 
 # Local Netlify folder
 .netlify
 
 auth
+

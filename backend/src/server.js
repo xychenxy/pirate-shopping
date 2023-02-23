@@ -1,4 +1,8 @@
-require("dotenv").config();
+const path = require("path");
+
+require("dotenv").config({
+	path: path.resolve(__dirname, "..", "./env/.env." + process.env.NODE_ENV),
+});
 
 const http = require("http");
 
@@ -10,7 +14,7 @@ const server = http.createServer(app);
 
 async function startServer() {
 	server.listen(PORT, () => {
-		console.log(`Listening on port ${PORT}...`);
+		console.log(`${process.env.NODE_ENV}, Listening on port ${PORT}...`);
 	});
 }
 

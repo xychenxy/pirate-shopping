@@ -1,9 +1,29 @@
 version: "3.9"
 services:
     backend:
+        image: online_shopping_backend
+        build:
+            context: .
+            dockerfile: Dockerfile.backend
+        volumes:
+            - ./backend:/app/backend
+            - /app/backend/node_modules
         environment:
-            - ENV_NAME=dev
-        command: yarn dev
+            - PORT=5000
+            - HOST=0.0.0.0
+        ports:
+            - "5000:5000"
     react-app:
+        image: online_shopping_react
+        build:
+            context: .
+            dockerfile: Dockerfile.react-app
+        volumes:
+            - ./react-app:/app/react-app
+            - /app/react-app/node_modules
         environment:
-            - ENV_NAME=dev
+            - PORT=5173
+            - VITE_BACKEND_URL=http://localhost:5000
+            - VITE_ENV_NAME=development
+        ports:
+            - "5173:5173"
