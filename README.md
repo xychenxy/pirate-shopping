@@ -38,3 +38,8 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 Please make sure **docker** have already installed.
 
 Run `./run_docker.sh dev|prod`
+
+## Production
+
+`docker build . -t xychenxy/pirate-shopping`
+`docker run -it -p 5000:5000 -e "NODE_ENV=production" xychenxy/pirate-shopping`
