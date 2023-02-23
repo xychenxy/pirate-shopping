@@ -1,4 +1,3 @@
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 import {
 	createAction,
 	Action,

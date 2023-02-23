@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { COLORS } from "../../utils/constant/colors";
 
 export const ProductCartContainer = styled.div`
 	width: 100%;
@@ -8,29 +9,36 @@ export const ProductCartContainer = styled.div`
 	align-items: center;
 	position: relative;
 
+	max-width: 285px;
+	max-height: 350px;
+	margin-bottom: 4rem;
+	margin-left: 2rem;
+	margin-right: 2rem;
 	img {
 		width: 100%;
 		height: 95%;
 		object-fit: cover;
 		margin-bottom: 5px;
+		border-radius: 5%;
+		opacity: 1;
+		transition: opacity 1s;
+
+		&:hover {
+			opacity: 0.5;
+		}
 	}
 
 	button {
 		width: 80%;
 		opacity: 0.7;
 		position: absolute;
-		top: 255px;
-		display: none;
-	}
+		top: 230px;
 
-	&:hover {
-		img {
-			opacity: 0.8;
-		}
+		&:hover {
+			transition: background-color 1s color 1s;
 
-		button {
-			opacity: 0.85;
-			display: flex;
+			background-color: ${COLORS.BLACK};
+			color: ${COLORS.WHITE};
 		}
 	}
 
@@ -62,7 +70,7 @@ export const ProductCartContainer = styled.div`
 
 export const Footer = styled.div`
 	width: 100%;
-	height: 5%;
+	height: 50px;
 	display: flex;
 	justify-content: space-between;
 	font-size: 18px;

@@ -1,12 +1,11 @@
 version: "3.9"
 services:
     pirate_shopping:
+        image: pirate_shopping
+        build: .
         environment:
-            - ENV_NAME=prod
-    backend:
-        environment:
-            - ENV_NAME=prod
-        command: yarn start
-    react-app:
-        environment:
-            - VITE_ENV_NAME=prod
+            - PORT=5000
+            - HOST=0.0.0.0
+            - ENV_NAME=prodution
+        ports:
+            - "5000:5000"
