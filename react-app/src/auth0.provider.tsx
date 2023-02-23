@@ -1,8 +1,6 @@
 import { Auth0Provider } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
-import react_cloud_key from "../auth/react_cloud_key.json";
-
 export const Auth0ProviderWithNavigate = ({
 	children,
 }: {
@@ -16,11 +14,11 @@ export const Auth0ProviderWithNavigate = ({
 
 	return (
 		<Auth0Provider
-			domain={react_cloud_key.auth0_domain}
-			clientId={react_cloud_key.auth0_clientId}
+			domain={import.meta.env.VITE_AUTH0_DOMAIN}
+			clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
 			authorizationParams={{
 				redirect_uri: window.location.origin,
-				audience: react_cloud_key.auth0_audience,
+				audience: import.meta.env.VITE_AUTH0_AUDIENCE,
 			}}
 			onRedirectCallback={onRedirectCallback}
 			// scope="read:current_user"

@@ -1,12 +1,8 @@
 import { useEffect, lazy, Suspense } from "react";
-import { useDispatch } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { checkUserSession } from "./store/user/user.action";
 import Spinner from "./components/spinner/spinner.component";
 import { GlobalStyle } from "./global.styled";
-
-import react_cloud_key from "../auth/react_cloud_key.json";
 
 import { PageLoader } from "./components/page-loader/page-loader.component";
 import { CallbackPage } from "./pages/callback-page/callback-page.component";
@@ -19,17 +15,14 @@ const Shop = lazy(() => import("./pages/shop/shop.component"));
 const Checkout = lazy(() => import("./pages/checkout/checkout.component"));
 
 function App() {
-	const dispatch = useDispatch();
-
-	const { isLoading, getAccessTokenSilently, isAuthenticated, user } =
-		useAuth0();
+	const { isLoading, getAccessTokenSilently, isAuthenticated } = useAuth0();
 
 	useEffect(() => {
 		try {
 			const fetchAccessToken = async () => {
 				const newAccessToken = await getAccessTokenSilently({
 					authorizationParams: {
-						audience: react_cloud_key.auth0_audience,
+						audience: import.meta.env.VITE_AUTH0_AUDIENCE,
 						scope: "read:current_user",
 					},
 				});
