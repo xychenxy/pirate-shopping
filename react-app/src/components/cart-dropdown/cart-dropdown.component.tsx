@@ -1,35 +1,64 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
 	CartDropdownContainer,
 	CartItems,
 	EmptyMessage,
+	CartItemsWrap,
+	CloseIconWrap,
 } from "./cart-dropdown.styled";
-import Button from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
-import { selectCartItems } from "../../store/cart/cart.selector";
+import {
+	selectCartItems,
+	selectIsCartOpen,
+} from "../../store/cart/cart.selector";
 import { useCallback } from "react";
+import { BasicButton } from "../buttons/basic-button";
+import { COLORS } from "../../utils/constant/colors";
+import { ReactComponent as CloseIcon } from "../../assets/close-square.svg";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 
 const CardDropDown = () => {
+	const dispatch = useDispatch();
+	const isCartOpen = useSelector(selectIsCartOpen);
+
+	const toggleIsCartOpen = () => {
+		dispatch(setIsCartOpen(!isCartOpen));
+	};
+
 	const cartItems = useSelector(selectCartItems);
 	const navigate = useNavigate();
 
 	const goToCheckoutHandler = useCallback(() => {
+		toggleIsCartOpen();
 		navigate("/checkout");
 	}, []);
 
 	return (
 		<CartDropdownContainer>
-			<CartItems>
-				{cartItems.length ? (
-					cartItems.map((item) => (
-						<CartItem cartItem={item} key={item.id} />
-					))
-				) : (
-					<EmptyMessage>Your cart is empty</EmptyMessage>
-				)}
-			</CartItems>
-			<Button onClick={goToCheckoutHandler}>Go To Checkout</Button>
+			<CartItemsWrap>
+				<CloseIconWrap onClick={toggleIsCartOpen}>
+					<CloseIcon />
+				</CloseIconWrap>
+
+				<CartItems>
+					{cartItems.length ? (
+						cartItems.map((item) => (
+							<CartItem cartItem={item} key={item.id} />
+						))
+					) : (
+						<EmptyMessage>Your cart is empty</EmptyMessage>
+					)}
+				</CartItems>
+			</CartItemsWrap>
+
+			<BasicButton
+				onClick={goToCheckoutHandler}
+				backgroundColor={COLORS.PRIMARY_COLOR_SPACE_CADET}
+				width="100%"
+			>
+				Go To Checkout
+			</BasicButton>
 		</CartDropdownContainer>
 	);
 };

@@ -146,6 +146,11 @@ export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
 
 	const querySnapshot = await getDocs(q);
 	// as we get this from db, typescript have no idea on it, so we need to cast docSnapshot.data() by using as keyword
+
+	console.log(
+		querySnapshot.docs.map((docSnapshot) => docSnapshot.data() as Category)
+	);
+
 	return querySnapshot.docs.map(
 		(docSnapshot) => docSnapshot.data() as Category
 	);

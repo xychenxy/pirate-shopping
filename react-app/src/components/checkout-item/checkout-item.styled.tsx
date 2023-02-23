@@ -6,7 +6,6 @@ export const CheckoutItemContainer = styled.div`
 	min-height: 100px;
 	border-bottom: 1px solid darkgrey;
 	padding: 15px 0;
-	font-size: 20px;
 	align-items: center;
 `;
 
@@ -15,8 +14,10 @@ export const ImageContainer = styled.div`
 	padding-right: 15px;
 
 	img {
-		width: 100%;
-		height: 100%;
+		/* width: 100%; */
+		/* height: 100%; */
+		width: 6rem;
+		border-radius: 5%;
 	}
 `;
 
@@ -24,19 +25,33 @@ export const BaseSpan = styled.span`
 	width: 23%;
 `;
 
-export const Quantity = styled(BaseSpan)`
+export const Quantity = styled.div`
+	width: 23%;
 	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 `;
 
 export const Arrow = styled.div`
 	cursor: pointer;
+
+	svg {
+		height: 20px;
+		width: 20px;
+	}
 `;
 
-export const Value = styled.span`
+export const Value = styled.div`
 	margin: 0 10px;
 `;
 
 export const RemoveButton = styled.div`
-	padding-left: 12px;
+	width: 8%;
+	text-align: center;
 	cursor: pointer;
+
+	svg {
+		width: 24px;
+		height: 24px;
+	}
 `;

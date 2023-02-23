@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
+import { COLORS } from "../../utils/constant/colors";
 
 export const CategoryPreviewContainer = styled.div`
 	display: flex;
@@ -14,8 +15,23 @@ export const CategoryPreviewContainer = styled.div`
 
 export const Title = styled(Link)`
 	font-size: 28px;
-	margin-bottom: 25px;
+	margin-top: 4rem;
+	margin-bottom: 5rem;
 	cursor: pointer;
+	color: ${COLORS.BLACK};
+	text-align: center;
+`;
+
+export const ShopMore = styled(Link)`
+	font-size: 1.6rem;
+	margin-bottom: 2rem;
+	cursor: pointer;
+	color: ${COLORS.BLACK};
+	text-align: center;
+
+	span {
+		border-bottom: 1px solid ${COLORS.BLACK};
+	}
 `;
 
 export const Preview = styled.div`

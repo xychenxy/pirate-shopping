@@ -1,16 +1,24 @@
 import styled from "styled-components";
 
 export const CheckoutContainer = styled.div`
-	width: 55%;
+	width: 65%;
 	min-height: 90vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin: 50px auto 0;
+
+	font-size: 1.6rem;
+
+	@media screen and (max-width: 800px) {
+		width: 90%;
+		font-size: 1.4rem;
+	}
 `;
 
 export const CheckoutHeader = styled.div`
 	width: 100%;
+	max-width: 800px;
 	padding: 10px 0;
 	display: flex;
 	justify-content: space-between;

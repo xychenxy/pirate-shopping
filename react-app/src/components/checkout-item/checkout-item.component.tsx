@@ -1,5 +1,8 @@
 import { FC, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ReactComponent as RemoveIcon } from "../../assets/remove.svg";
+import { ReactComponent as MinusIcon } from "../../assets/minus.svg";
+import { ReactComponent as PlusIcon } from "../../assets/plus.svg";
 
 import {
 	CheckoutItemContainer,
@@ -43,14 +46,20 @@ const CheckoutItem: FC<CheckoutItemProps> = memo(({ cartItem }) => {
 			<ImageContainer>
 				<img src={imageUrl} alt={`${name}`} />
 			</ImageContainer>
-			<BaseSpan> {name} </BaseSpan>
+			<BaseSpan> {name}</BaseSpan>
 			<Quantity>
-				<Arrow onClick={removeItemHandler}>&#10094;</Arrow>
+				<Arrow onClick={removeItemHandler}>
+					<MinusIcon />
+				</Arrow>
 				<Value>{quantity}</Value>
-				<Arrow onClick={addItemHandler}>&#10095;</Arrow>
+				<Arrow onClick={addItemHandler}>
+					<PlusIcon />
+				</Arrow>
 			</Quantity>
-			<BaseSpan> {price}</BaseSpan>{" "}
-			<RemoveButton onClick={clearItemHandler}>&#10005;</RemoveButton>
+			<BaseSpan> ${price}</BaseSpan>
+			<RemoveButton onClick={clearItemHandler}>
+				<RemoveIcon />
+			</RemoveButton>
 		</CheckoutItemContainer>
 	);
 });

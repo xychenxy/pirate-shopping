@@ -4,6 +4,8 @@ WORKDIR "/app/backend"
 
 COPY backend/package*.json ./
 
+COPY backend/auth ./
+
 RUN yarn install
 
 

@@ -5,6 +5,7 @@ import {
 	Title,
 	CategoryPreviewContainer,
 	Preview,
+	ShopMore,
 } from "./category-preview.styled";
 
 type CategoryPreviewProps = {
@@ -15,9 +16,7 @@ type CategoryPreviewProps = {
 const CategoryPreview: FC<CategoryPreviewProps> = ({ products, title }) => {
 	return (
 		<CategoryPreviewContainer>
-			<h2>
-				<Title to={title}>{title.toUpperCase()}</Title>
-			</h2>
+			<Title to={title}>{title.toUpperCase()}</Title>
 			<Preview>
 				{products
 					.filter((_, idx) => idx < 4)
@@ -25,6 +24,9 @@ const CategoryPreview: FC<CategoryPreviewProps> = ({ products, title }) => {
 						<ProductCard product={product} key={index} />
 					))}
 			</Preview>
+			<ShopMore to={title}>
+				<span>Show more</span>
+			</ShopMore>
 		</CategoryPreviewContainer>
 	);
 };

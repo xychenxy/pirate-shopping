@@ -6,11 +6,11 @@ import {
 	Price,
 	ProductCartContainer,
 } from "./product-card.styled";
-import Button from "../button/button.component";
-import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { addItemToCart } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
 import { CategoryItem } from "../../store/categories/category.types";
+import { BasicButton } from "../buttons/basic-button";
+import { COLORS } from "../../utils/constant/colors";
 
 type ProductCardProps = {
 	product: CategoryItem;
@@ -27,16 +27,13 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
 	return (
 		<ProductCartContainer>
 			<img src={imageUrl} alt={name} />
+			<BasicButton onClick={addProductToCard} color={COLORS.BLACK}>
+				Add to card
+			</BasicButton>
 			<Footer>
 				<Name>{name}</Name>
-				<Price>{price}</Price>
+				<Price>${price}</Price>
 			</Footer>
-			<Button
-				buttonType={BUTTON_TYPE_CLASSES.inverted}
-				onClick={addProductToCard}
-			>
-				Add to card
-			</Button>
 		</ProductCartContainer>
 	);
 };

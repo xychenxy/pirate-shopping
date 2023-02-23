@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { motion } from "framer-motion";
 
 import {
 	BaseButton,
@@ -6,23 +7,44 @@ import {
 	InvertedButton,
 } from "../button/button.styled";
 
-export const CartDropdownContainer = styled.div`
+const slideInFromLeft = keyframes`
+0% {
+	opacity: 0;
+    transform: translateX(240px);
+  }
+  100% {
+	opacity:1;
+    transform: translateX(0);
+  }
+`;
+
+export const CartDropdownContainer = styled(motion.div)`
 	position: absolute;
 	width: 240px;
-	height: 340px;
+	height: 100vh;
+	min-height: 100px;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	padding: 20px;
 	border: 1px solid black;
 	background-color: white;
-	top: 90px;
-	right: 40px;
+	top: 0;
+	right: 0;
 	z-index: 5;
+	overflow: scroll;
 
-	${BaseButton},
+	animation: 0.5s ease-out 0s 1 ${slideInFromLeft};
+
+	/* ${BaseButton},
 	${GoogleSignInButton},
     ${InvertedButton} {
 		margin-top: auto;
+	} */
+
+	svg {
+		width: 24px;
+		height: 24px;
 	}
 `;
 
@@ -32,8 +54,22 @@ export const EmptyMessage = styled.span`
 `;
 
 export const CartItems = styled.div`
-	height: 240px;
+	margin-top: 2rem;
+	/* height: 240px; */
 	display: flex;
 	flex-direction: column;
-	overflow: scroll;
+`;
+
+export const CartItemsWrap = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin-bottom: 2rem;
+`;
+
+export const CloseIconWrap = styled.div`
+	display: flex;
+	justify-content: flex-end;
+
+	cursor: pointer;
 `;
