@@ -4,7 +4,7 @@ import {
 	CheckoutHeader,
 	HeaderBlock,
 	Total,
-} from "./checkout.styled";
+} from "./checkout-page.styled";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import {
 	selectCartItems,

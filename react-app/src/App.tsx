@@ -5,14 +5,16 @@ import Spinner from "./components/spinner/spinner.component";
 import { GlobalStyle } from "./utils/global-styled/global-styled.utils";
 
 import { PageLoader } from "./components/page-loader/page-loader.component";
-import { CallbackPage } from "./pages/callback-page/callback-page.component";
-import { ProfilePage } from "./pages/profile-page/profile-page.component";
+import { CallbackPage } from "./routes/callback-page/callback-page.component";
+import { ProfilePage } from "./routes/profile-page/profile-page.component";
 import { AuthenticationGuard } from "./components/authentication-guard/authentication-guard.component";
-import { NotFoundPage } from "./pages/not-found-page/not-found-page.component";
+import { NotFoundPage } from "./routes/not-found-page/not-found-page.component";
 
-const Home = lazy(() => import("./pages/home/home.component"));
-const Shop = lazy(() => import("./pages/shop/shop.component"));
-const Checkout = lazy(() => import("./pages/checkout/checkout.component"));
+const HomePage = lazy(() => import("./routes/home-page/home-page.component"));
+const ShopPage = lazy(() => import("./routes/shop-page/shop-page.component"));
+const CheckoutPage = lazy(
+	() => import("./routes/checkout-page/checkout-page.component")
+);
 
 function App() {
 	const { isLoading, getAccessTokenSilently, isAuthenticated } = useAuth0();
@@ -45,9 +47,9 @@ function App() {
 		<Suspense fallback={<Spinner />}>
 			<GlobalStyle />
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="shop/*" element={<Shop />} />
-				<Route path="checkout" element={<Checkout />} />
+				<Route path="/" element={<HomePage />} />
+				<Route path="shop/*" element={<ShopPage />} />
+				<Route path="checkout" element={<CheckoutPage />} />
 				<Route
 					path="profile"
 					element={<AuthenticationGuard component={ProfilePage} />}

@@ -1,45 +1,40 @@
+import { useEffect, useState } from "react";
+import { fetchDirectoryAsync } from "../../store/directory/directory.action";
+import {
+	selectDirectoryMap,
+	selectDirectoryIsLoading,
+} from "../../store/directory/directory.selector";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import CategoryItem from "../directory-item/directory-item.component";
+import Spinner from "../spinner/spinner.component";
 import { DirectoryContainer } from "./directory.styled";
-
-export type DirectoryCategory = {
-	id: number;
-	title: string;
-	imageUrl: string;
-};
-const categories: DirectoryCategory[] = [
-	{
-		id: 1,
-		title: "hats",
-		imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
-	},
-	{
-		id: 2,
-		title: "jackets",
-		imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
-	},
-	{
-		id: 3,
-		title: "sneakers",
-		imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
-	},
-	{
-		id: 4,
-		title: "womens",
-		imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
-	},
-	{
-		id: 5,
-		title: "mens",
-		imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-	},
-];
+import { DirectoryCategory } from "../../store/directory/directory.types";
 
 const Directory = () => {
+	const dispatch = useAppDispatch();
+
+	const directoryMap = useAppSelector(selectDirectoryMap);
+	const isLoading = useAppSelector(selectDirectoryIsLoading);
+
+	const [directory, setDirectory] = useState<DirectoryCategory[]>([]);
+
+	useEffect(() => {
+		dispatch(fetchDirectoryAsync());
+	}, []);
+
+	useEffect(() => {
+		setDirectory(directoryMap);
+	}, [directoryMap]);
+
 	return (
 		<DirectoryContainer>
-			{categories.map((category: DirectoryCategory) => (
-				<CategoryItem key={category.id} category={category} />
-			))}
+			{isLoading ? (
+				<Spinner />
+			) : (
+				directory.map((category: DirectoryCategory, index: number) => (
+					<CategoryItem key={index} category={category} />
+				))
+			)}
 		</DirectoryContainer>
 	);
 };

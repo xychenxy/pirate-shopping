@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Dispatch } from "redux";
-import { BASE_URL } from "../../utils/cache/api.cache";
+import { CATEGORIES_REQUEST_PATH } from "../../utils/axios/request-path";
 import {
 	CATEGORIES_ACTION_TYPES,
 	Category,
@@ -12,24 +12,12 @@ export const fetchCategoriesAsync =
 		try {
 			dispatch({ type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START });
 
-			await axios
-				.post(
-					`${BASE_URL}/v1/categories`,
-					{},
-					{
-						headers: {
-							Authorization: `Bearer ${localStorage.getItem(
-								"token"
-							)}`,
-						},
-					}
-				)
-				.then((response) => {
-					dispatch({
-						type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
-						payload: response.data as Category[],
-					});
+			await axios.get(CATEGORIES_REQUEST_PATH).then((response) => {
+				dispatch({
+					type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
+					payload: response.data as Category[],
 				});
+			});
 		} catch (error) {
 			dispatch({
 				type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED,
