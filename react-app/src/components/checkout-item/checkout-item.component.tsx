@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { ReactComponent as RemoveIcon } from "../../assets/remove.svg";
 import { ReactComponent as MinusIcon } from "../../assets/minus.svg";
 import { ReactComponent as PlusIcon } from "../../assets/plus.svg";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 import {
 	CheckoutItemContainer,
@@ -25,8 +25,8 @@ type CheckoutItemProps = {
 	cartItem: CartItem;
 };
 const CheckoutItem: FC<CheckoutItemProps> = memo(({ cartItem }) => {
-	const dispatch = useDispatch();
-	const cartItems = useSelector(selectCartItems);
+	const dispatch = useAppDispatch();
+	const cartItems = useAppSelector(selectCartItems);
 	const { name, imageUrl, price, quantity } = cartItem;
 
 	const clearItemHandler = () => {

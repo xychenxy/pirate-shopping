@@ -4,10 +4,8 @@ const { jwtCheck } = require("../../middleware/authentication");
 
 const categoriesRouter = express.Router();
 
-categoriesRouter.post("/", jwtCheck, getAllCategories);
+categoriesRouter.post("/", getAllCategories);
 
-categoriesRouter.get("/:id", async (req, res) => {
-	const userId = req.params.id;
-});
+categoriesRouter.get("/:id", async (req, res) => {});
 
 module.exports = categoriesRouter;

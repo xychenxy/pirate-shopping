@@ -2,7 +2,7 @@ import { useEffect, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import Spinner from "./components/spinner/spinner.component";
-import { GlobalStyle } from "./global.styled";
+import { GlobalStyle } from "./utils/global-styled/global-styled.utils";
 
 import { PageLoader } from "./components/page-loader/page-loader.component";
 import { CallbackPage } from "./pages/callback-page/callback-page.component";

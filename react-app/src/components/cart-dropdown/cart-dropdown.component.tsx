@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
 	CartDropdownContainer,
@@ -17,16 +16,17 @@ import { BasicButton } from "../buttons/basic-button";
 import { COLORS } from "../../utils/constant/colors";
 import { ReactComponent as CloseIcon } from "../../assets/close-square.svg";
 import { setIsCartOpen } from "../../store/cart/cart.action";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 const CardDropDown = () => {
-	const dispatch = useDispatch();
-	const isCartOpen = useSelector(selectIsCartOpen);
+	const dispatch = useAppDispatch();
+	const isCartOpen = useAppSelector(selectIsCartOpen);
 
 	const toggleIsCartOpen = () => {
 		dispatch(setIsCartOpen(!isCartOpen));
 	};
 
-	const cartItems = useSelector(selectCartItems);
+	const cartItems = useAppSelector(selectCartItems);
 	const navigate = useNavigate();
 
 	const goToCheckoutHandler = useCallback(() => {

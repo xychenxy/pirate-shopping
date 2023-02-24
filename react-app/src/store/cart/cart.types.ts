@@ -11,3 +11,15 @@ export enum CART_ACTION_TYPES {
 export type CartItem = CategoryItem & {
 	quantity: number;
 };
+
+export interface ISetIsCartOpen {
+	type: typeof CART_ACTION_TYPES.SET_IS_CART_OPEN;
+	payload: boolean;
+}
+
+export interface ISetCartItems {
+	type: typeof CART_ACTION_TYPES.SET_CART_ITEMS;
+	payload: CartItem[];
+}
+
+export type CartDispatchTypes = ISetIsCartOpen | ISetCartItems;

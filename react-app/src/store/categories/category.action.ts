@@ -1,43 +1,39 @@
+import axios from "axios";
+import { Dispatch } from "redux";
+import { BASE_URL } from "../../utils/cache/api.cache";
 import {
-	createAction,
-	Action,
-	ActionWithPayload,
-	withMatcher,
-} from "../../utils/reducer/reducer.util";
-import { CATEGORIES_ACTION_TYPES, Category } from "./category.types";
+	CATEGORIES_ACTION_TYPES,
+	Category,
+	CategoriesDispatchTypes,
+} from "./category.types";
 
-export type FetchCategoriesStart =
-	Action<CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START>;
+export const fetchCategoriesAsync =
+	() => async (dispatch: Dispatch<CategoriesDispatchTypes>) => {
+		try {
+			dispatch({ type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START });
 
-export type FetchCategoriesSuccess = ActionWithPayload<
-	CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
-	Category[]
->;
-
-export type FetchCategoriesFailed = ActionWithPayload<
-	CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED,
-	Error
->;
-
-export type CategoryAction =
-	| FetchCategoriesStart
-	| FetchCategoriesSuccess
-	| FetchCategoriesFailed;
-
-export const fetchCategoriesStart = withMatcher(
-	(): FetchCategoriesStart =>
-		createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_START)
-);
-
-export const fetchCategoriesSuccess = withMatcher(
-	(categoriesArray: Category[]): FetchCategoriesSuccess =>
-		createAction(
-			CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
-			categoriesArray
-		)
-);
-
-export const fetchCategoriesFailed = withMatcher(
-	(error: Error): FetchCategoriesFailed =>
-		createAction(CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED, error)
-);
+			await axios
+				.post(
+					`${BASE_URL}/v1/categories`,
+					{},
+					{
+						headers: {
+							Authorization: `Bearer ${localStorage.getItem(
+								"token"
+							)}`,
+						},
+					}
+				)
+				.then((response) => {
+					dispatch({
+						type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_SUCCESS,
+						payload: response.data as Category[],
+					});
+				});
+		} catch (error) {
+			dispatch({
+				type: CATEGORIES_ACTION_TYPES.FETCH_CATEGORIES_FAILED,
+				payload: error as Error,
+			});
+		}
+	};

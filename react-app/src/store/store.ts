@@ -1,10 +1,15 @@
-import { configureStore, MiddlewareArray, Middleware } from "@reduxjs/toolkit";
+import {
+	configureStore,
+	MiddlewareArray,
+	Middleware,
+	AnyAction,
+} from "@reduxjs/toolkit";
 import { persistStore, persistReducer, PersistConfig } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
-import createSagaMiddleware from "@redux-saga/core";
 import { rootReducer } from "./root-reducer";
-import { rootSaga } from "./root-saga";
+// import { composeWithDevTools } from "redux-devtools-extension";
+import thunk, { ThunkDispatch } from "redux-thunk";
 
 /**
  * types
@@ -23,11 +28,10 @@ const persistConfig: ExtendedPersistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const sagaMiddleware = createSagaMiddleware();
-
 const middleWares = [
 	import.meta.env.MODE === "development" && logger,
-	sagaMiddleware,
+	thunk,
+	// composeWithDevTools,
 ].filter((middleware): middleware is Middleware => Boolean(middleware));
 
 export const store = configureStore({
@@ -36,6 +40,7 @@ export const store = configureStore({
 	middleware: new MiddlewareArray().concat(middleWares),
 });
 
-sagaMiddleware.run(rootSaga);
-
 export const persistor = persistStore(store);
+
+export type AppDispatch = typeof store.dispatch;
+export type AppThunkDispatch = ThunkDispatch<RootState, any, AnyAction>;

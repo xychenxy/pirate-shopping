@@ -7,7 +7,7 @@ import { Elements } from "@stripe/react-stripe-js";
 
 import { store, persistor } from "./store/store";
 import { stripePromise } from "./utils/stripe/stripe.util";
-import { Auth0ProviderWithNavigate } from "./auth0.provider";
+import { Auth0ProviderWithNavigate } from "./utils/auth0/auth0.provider";
 
 import App from "./App";
 
