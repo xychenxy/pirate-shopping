@@ -21,7 +21,7 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 
 ### Front-end
 
-`React 18`, `vite`, `TypeScript`, `Redux`, `Hooks`, `Stripe`, `Firebase`, `Google Login`
+`React 18`, `vite`, `TypeScript`, `Redux`, `Hooks`, `Firebase`, `Auth0 Login`, `CSS-in-JS`
 
 ### Backend
 
@@ -29,7 +29,7 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 
 ### Others
 
-`Docker`, `GitHub Action`, `Netlify`
+`AWS`, `Docker`, `GitHub Action`, `Netlify`
 
 <br/>
 
