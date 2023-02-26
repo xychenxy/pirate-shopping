@@ -19,31 +19,14 @@ export const ContentLayout = styled.div`
 	}
 `;
 
-export const ContentLayoutBody = styled.div`
-	font-size: 1.6rem;
-	line-height: 2.4rem;
-`;
-
-export const ProfileGridContainer = styled.div`
+export const UserInfoContainer = styled.div`
 	display: flex;
-	flex-direction: column;
-
-	/* responsive */
-
-	margin-top: 48px;
-
-	@media only screen and (max-width: 480px) {
-		margin-top: 2.4rem;
-	}
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
 `;
 
-export const ProfileGridContainerHeader = styled.div`
-	display: grid;
-	grid-template-columns: auto 1fr;
-	column-gap: 16px;
-`;
-
-export const ProfileGridContainerImage = styled.img`
+export const UserImage = styled.img`
 	border: solid 2px ${COLORS.AQUA};
 	border-radius: 50%;
 
@@ -62,22 +45,38 @@ export const ProfileGridContainerImage = styled.img`
 	}
 `;
 
-export const ProfileGridContainerHeadline = styled.div`
+export const UserDetail = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
-`;
+	justify-content: flex-start;
+	align-items: left;
+	margin-left: 2rem;
 
-export const ProfileGridContainerProfileTitle = styled.h2`
-	margin-top: 0;
-	margin-bottom: 0;
-
-	color: ${COLORS.WHITE};
-	@media only screen and (max-width: 480px) {
+	p {
 		font-size: 1.6rem;
+		margin: 0;
+		margin-top: 0.5rem;
 	}
 `;
 
-export const ProfileGridContainerProfileDescription = styled.span`
-	font-size: 1.3rem;
+export const PurchaseHistory = styled.div`
+	margin-top: 5rem;
+
+	tr {
+		font-size: 1.6rem;
+		margin: 0;
+		border-bottom: 1px solid ${COLORS.BLACK};
+		background-color: aliceblue;
+	}
+
+	tr,
+	th,
+	td {
+		padding: 2rem;
+		text-align: left;
+	}
+`;
+
+export const ItemContainer = styled.div`
+	border-bottom: 1px solid ${COLORS.ALUMINIUM};
 `;

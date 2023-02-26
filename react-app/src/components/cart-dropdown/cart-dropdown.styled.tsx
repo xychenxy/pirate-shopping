@@ -6,6 +6,7 @@ import {
 	GoogleSignInButton,
 	InvertedButton,
 } from "../button/button.styled";
+import { COLORS } from "../../utils/constant/colors";
 
 const slideInFromLeft = keyframes`
 0% {
@@ -36,11 +37,13 @@ export const CartDropdownContainer = styled(motion.div)`
 
 	animation: 0.5s ease-out 0s 1 ${slideInFromLeft};
 
-	/* ${BaseButton},
-	${GoogleSignInButton},
-    ${InvertedButton} {
-		margin-top: auto;
-	} */
+	button {
+		&:hover {
+			background-color: ${COLORS.WHITE};
+			color: ${COLORS.PRIMARY_COLOR_SPACE_CADET};
+			border: 1px solid ${COLORS.PRIMARY_COLOR_SPACE_CADET};
+		}
+	}
 
 	svg {
 		width: 24px;

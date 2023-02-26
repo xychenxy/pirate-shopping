@@ -1,8 +1,6 @@
-import { createAction, withMatcher } from "../../utils/reducer/reducer.util";
 import {
 	CART_ACTION_TYPES,
 	CartItem,
-	CartDispatchTypes,
 	ISetIsCartOpen,
 	ISetCartItems,
 } from "./cart.types";
@@ -119,5 +117,13 @@ export const clearItemFromCart =
 		dispatch({
 			type: CART_ACTION_TYPES.SET_CART_ITEMS,
 			payload: newCartItems,
+		});
+	};
+
+export const clearAllItemsFromCart =
+	() => (dispatch: Dispatch<ISetCartItems>) => {
+		dispatch({
+			type: CART_ACTION_TYPES.SET_CART_ITEMS,
+			payload: [],
 		});
 	};

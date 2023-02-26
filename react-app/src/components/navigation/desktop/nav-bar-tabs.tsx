@@ -8,11 +8,12 @@ export const NavBarTabs = () => {
 	return (
 		<NavBarTabsContainer>
 			<NavBarTab path="/shop" label="Shop" />
+			<NavBarTab path="/checkout" label="Checkout" />
 			{isAuthenticated && (
 				<>
-					<NavBarTab path="/protected" label="Protected" />
+					{/* <NavBarTab path="/protected" label="Protected" /> */}
 					<NavBarTab path="/profile" label="Profile" />
-					<NavBarTab path="/admin" label="Admin" />
+					{/* <NavBarTab path="/admin" label="Admin" /> */}
 				</>
 			)}
 		</NavBarTabsContainer>

@@ -4,3 +4,5 @@ export const VERSION = "v1";
 
 export const CATEGORIES_REQUEST_PATH = `${BASE_URL}/${VERSION}/categories`;
 export const DIRECTORY_REQUEST_PATH = `${BASE_URL}/${VERSION}/directory`;
+export const PAYMENT_REQUEST_PATH = `${BASE_URL}/${VERSION}/payment`;
+export const PROFILE_REQUEST_PATH = `${BASE_URL}/${VERSION}/profile`;
