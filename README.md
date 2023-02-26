@@ -10,10 +10,8 @@ Now this project is deployed by Netlify, https://super-online-shopping.netlify.a
 
 -   Deploy to AWS instead of Netlify, https://www.pirate-in-melbourne.com/ [Done]
 -   Setup github actions, to push docker images to AWS ECR [Done]
--   Auth0 [Doing]
--   Unit test [To do]
--   Integration test [To do]
--   Storybook [To do]
+-   Auth0 [Done]
+
 
 <br/>
 
