@@ -12,27 +12,28 @@ export const MobileNavBarTabs = ({ handleClick }: MobileNavBarTabsProps) => {
 	return (
 		<MobileNavBarTabsContainer>
 			<MobileNavBarTab
-				path="/profile"
-				label="Profile"
+				path="/shop"
+				label="Shop"
 				handleClick={handleClick}
 			/>
 			<MobileNavBarTab
-				path="/public"
-				label="Public"
+				path="/checkout"
+				label="Checkout"
 				handleClick={handleClick}
 			/>
+
 			{isAuthenticated && (
 				<>
 					<MobileNavBarTab
-						path="/protected"
-						label="Protected"
+						path="/profile"
+						label="Profile"
 						handleClick={handleClick}
 					/>
-					<MobileNavBarTab
+					{/* <MobileNavBarTab
 						path="/admin"
 						label="Admin"
 						handleClick={handleClick}
-					/>
+					/> */}
 				</>
 			)}
 		</MobileNavBarTabsContainer>

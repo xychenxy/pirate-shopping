@@ -60,7 +60,18 @@ export const UserDetail = styled.div`
 `;
 
 export const PurchaseHistory = styled.div`
+	overflow-x: auto;
+
+	width: 80%;
+	margin: 0 auto;
 	margin-top: 5rem;
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+		border: 1px solid #ddd;
+	}
 
 	tr {
 		font-size: 1.6rem;
@@ -74,6 +85,14 @@ export const PurchaseHistory = styled.div`
 	td {
 		padding: 2rem;
 		text-align: left;
+	}
+
+	tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	@media only screen and (max-width: 640px) {
+		width: 95%;
 	}
 `;
 

@@ -1,21 +1,19 @@
 import { MobileNavBarToggleContainer } from "./mobile-nav-bar.styled";
+import { ReactComponent as MenuLogo } from "../../../assets/menu.svg";
 
 type NavBarTabProps = {
-	icon: string;
+	// icon: string;
 	handleClick: () => void;
 };
 
-export const MobileMenuToggleButton = ({
-	icon,
-	handleClick,
-}: NavBarTabProps) => {
+export const MobileMenuToggleButton = ({ handleClick }: NavBarTabProps) => {
 	return (
 		<MobileNavBarToggleContainer
 			className="material-icons"
 			id="mobile-menu-toggle-button"
 			onClick={handleClick}
 		>
-			{icon}
+			<MenuLogo />
 		</MobileNavBarToggleContainer>
 	);
 };

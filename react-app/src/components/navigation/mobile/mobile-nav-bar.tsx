@@ -3,6 +3,7 @@ import { MobileMenuToggleButton } from "./mobile-menu-toggle-button";
 import { MobileNavBarBrand } from "./mobile-nav-bar-brand";
 import { MobileNavBarButtons } from "./mobile-nav-bar-buttons";
 import { MobileNavBarTabs } from "./mobile-nav-bar-tabs";
+import { MobileNavBarCart } from "./mobile-nav-bar-cart";
 
 import {
 	MobileNavBarContainer,
@@ -15,17 +16,9 @@ const MobileMenuState = {
 	OPEN: "open",
 };
 
-const MobileMenuIcon = {
-	CLOSE: "close",
-	MENU: "menu",
-};
-
 export const MobileNavBar = () => {
 	const [mobileMenuState, setMobileMenuState] = React.useState(
 		MobileMenuState.CLOSED
-	);
-	const [mobileMenuIcon, setMobileMenuIcon] = React.useState(
-		MobileMenuIcon.MENU
 	);
 
 	const isMobileMenuOpen = () => {
@@ -35,13 +28,11 @@ export const MobileNavBar = () => {
 	const closeMobileMenu = () => {
 		document.body.classList.remove("mobile-scroll-lock");
 		setMobileMenuState(MobileMenuState.CLOSED);
-		setMobileMenuIcon(MobileMenuIcon.MENU);
 	};
 
 	const openMobileMenu = () => {
 		document.body.classList.add("mobile-scroll-lock");
 		setMobileMenuState(MobileMenuState.OPEN);
-		setMobileMenuIcon(MobileMenuIcon.CLOSE);
 	};
 
 	const toggleMobileMenu = () => {
@@ -56,11 +47,8 @@ export const MobileNavBar = () => {
 		<MobileNavBarContainer>
 			<MobileNavBarNav>
 				<MobileNavBarBrand handleClick={closeMobileMenu} />
-				<MobileMenuToggleButton
-					icon={mobileMenuIcon}
-					handleClick={toggleMobileMenu}
-				/>
-
+				<MobileNavBarCart handleClick={closeMobileMenu} />
+				<MobileMenuToggleButton handleClick={toggleMobileMenu} />
 				{isMobileMenuOpen() && (
 					<MobileNavBarMenuContainer>
 						<MobileNavBarTabs handleClick={closeMobileMenu} />

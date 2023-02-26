@@ -1,11 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 
-import {
-	BaseButton,
-	GoogleSignInButton,
-	InvertedButton,
-} from "../button/button.styled";
 import { COLORS } from "../../utils/constant/colors";
 
 const slideInFromLeft = keyframes`

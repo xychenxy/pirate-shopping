@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { COLORS } from "../../../utils/constant/colors";
 
 export const MobileNavBarToggleContainer = styled.span`
-	margin-left: 2.4rem;
-	font-size: 3.6rem;
-	cursor: pointer;
+	margin-left: 0.8rem;
+	svg {
+		height: 34px;
+		width: 34px;
+	}
 `;
 
 export const MobileNavBarBrandContainer = styled.div`
@@ -32,6 +34,12 @@ export const MobileNavBarButtonsContainer = styled.div`
 	justify-content: center;
 	padding: 3.2rem;
 	background-color: ${COLORS.BLACK};
+
+	button {
+		&:last-child {
+			color: white;
+		}
+	}
 `;
 
 export const MobileNavBarTabNavLink = styled(NavLink)`
@@ -124,6 +132,17 @@ export const MobileNavBarNav = styled.nav`
 	margin: 0;
 `;
 
+const slideTopToDown = keyframes`
+0% {
+	opacity: 0;
+    transform: translateY(-50%);
+  }
+  100% {
+	opacity:1;
+    transform: translateY(0);
+  }
+`;
+
 export const MobileNavBarMenuContainer = styled.div`
 	width: 100%;
 	height: calc(100% - 6.4rem);
@@ -133,4 +152,19 @@ export const MobileNavBarMenuContainer = styled.div`
 	${COLORS.BLACK};
 
 	z-index: 300;
+
+	animation: 0.5s ease-out 0s 1 ${slideTopToDown};
+`;
+
+export const MobileNavBarCartContainer = styled(NavLink)`
+	color: white;
+
+	svg {
+		height: 24px;
+		width: 24px;
+	}
+
+	span {
+		margin-left: 0.5rem;
+	}
 `;
