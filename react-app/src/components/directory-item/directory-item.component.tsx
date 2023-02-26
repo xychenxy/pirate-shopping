@@ -3,7 +3,7 @@ import {
 	DirectoryItemContainer,
 	Body,
 } from "./directory-item.styled";
-import { DirectoryCategory } from "../directory/directory.component";
+import { DirectoryCategory } from "../../store/directory/directory.types";
 import { useNavigate } from "react-router-dom";
 
 type CategoryItemProps = {
