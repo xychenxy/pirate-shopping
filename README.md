@@ -2,7 +2,6 @@
 
 The pirate shopping project is one of my side projects that allows me to keep adding some tech to advance my skillset.
 
-Now this project is deployed by Netlify, https://super-online-shopping.netlify.app/
 
 <br/>
 
